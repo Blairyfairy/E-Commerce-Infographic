@@ -1,222 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blair Page | Portfolio & Experience Infographic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #14A800;
-      --glass-bg: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.15);
-      --dark-bg: #0a0a0a;
-      --light-color: #f0f0f0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--dark-bg);
-      color: var(--light-color);
-    }
+<title>E-Commerce Growth Intelligence Engine</title>
 
-    a { color: var(--primary-color); text-decoration: none; }
-    img { max-width: 100%; display: block; }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+<style>
+:root{
+--bg:#05070f;
+--card:rgba(255,255,255,0.05);
+--accent:#00e0ff;
+--accent2:#00ffa6;
+}
 
-    /* HEADER */
-    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); position: sticky; top:0; z-index:1000; }
-    header h1 { margin:0; font-size:1.5rem; }
-    nav a { margin:0 0.75rem; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 
-    /* IDENTITY */
-    .identity-row { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; margin-top:2rem; }
-    .profile-img { width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid var(--primary-color); }
-    .identity-info { max-width:800px; }
+html,body{
+overflow-x:hidden;
+background:radial-gradient(circle at top,#0a1f3c,#05070f);
+color:#fff;
+scroll-behavior:smooth;
+}
 
-    /* SOCIAL LINKS */
-    .social-links { margin-top:0.5rem; }
-    .social-links a { margin:0 0.5rem; font-size:1.5rem; }
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:center;gap:16px;
+padding:10px;background:rgba(0,0,0,0.7);
+backdrop-filter:blur(12px);z-index:1000;flex-wrap:wrap;
+}
+nav a{color:#fff;text-decoration:none;font-size:.8rem;opacity:.7;}
+nav a:hover{opacity:1;color:var(--accent);}
 
-    /* MATRIX CARDS */
-    .matrix-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem; margin-top:3rem; }
-    .matrix-card { background: var(--glass-bg); border:1px solid var(--glass-border); border-radius:14px; backdrop-filter:blur(6px); transition:0.3s; }
-    .matrix-card:hover { transform: translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.25); }
-    .card-toggle { width:100%; background:none; border:none; color:inherit; font-size:1rem; display:flex; justify-content:space-between; padding:1rem; cursor:pointer; }
-    .card-toggle:focus { outline:2px solid rgba(255,255,255,0.35); outline-offset:2px; }
-    .expand-icon { font-size:1.3rem; transition:0.3s; }
-    .matrix-card.open .expand-icon { transform:rotate(180deg); }
-    .card-content { display:none; padding:0 1rem 1rem; }
-    .matrix-card.open .card-content { display:block; }
+.hero{
+height:85vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
+}
+.hero h1{
+font-size:clamp(2.2rem,5vw,3.8rem);
+background:linear-gradient(90deg,#00e0ff,#00ffa6);
+-webkit-background-clip:text;color:transparent;
+}
 
-    /* TIMELINE / EXPERIENCE */
-    .timeline { margin-top:4rem; }
-    .timeline h2 { text-align:center; font-size:2rem; margin-bottom:2rem; }
-    .timeline-item { display:flex; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; background:var(--glass-bg); padding:1rem; border-radius:12px; border:1px solid var(--glass-border); backdrop-filter:blur(6px); }
-    .timeline-content { flex:1; display:flex; flex-direction:column; gap:0.5rem; }
-    .job-logo img { max-width:120px; }
-    .timeline-date { font-size:0.85rem; color:#aaa; }
-    .project-list li { margin:0.5rem 0; }
+.section{max-width:1150px;margin:auto;padding:60px 15px;}
 
-    @media(max-width:768px) {
-      .identity-row { flex-direction:column; align-items:center; }
-      .matrix-grid { grid-template-columns:1fr; }
-      .timeline-item { flex-direction:column; align-items:center; }
-    }
-  </style>
+.card{
+background:var(--card);
+border-radius:14px;padding:18px;margin-bottom:20px;
+backdrop-filter:blur(18px);
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+transition:.3s;
+}
+.card:hover{transform:translateY(-4px);}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:15px;
+}
+
+input[type=range]{width:100%;margin:10px 0;}
+
+button{
+padding:8px 12px;border:none;border-radius:8px;
+background:linear-gradient(90deg,#00e0ff,#00ffa6);
+cursor:pointer;margin:4px;
+}
+
+.metrics{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;margin-top:10px;
+}
+
+.metric{
+background:rgba(255,255,255,0.05);
+padding:10px;border-radius:10px;text-align:center;
+}
+
+canvas{width:100%!important;}
+
+#topBtn{
+position:fixed;bottom:20px;right:20px;
+width:45px;height:45px;border-radius:50%;
+border:none;background:linear-gradient(90deg,#00e0ff,#00ffa6);
+display:none;cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Blair Page</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Portfolio</a>
-    <a href="#">Contact</a>
-  </nav>
-</header>
+<nav>
+<a href="#roi">ROI</a>
+<a href="#data">Data</a>
+<a href="#intel">Intelligence</a>
+<a href="#platforms">Platforms</a>
+</nav>
 
-<div class="container">
+<section class="hero">
+<h1>Revenue Intelligence Engine</h1>
+<p>Conversion • UX • Profit Systems</p>
+</section>
 
-  <!-- IDENTITY -->
-  <section class="identity-row">
-    <img src="https://i.postimg.cc/wjBSDH9v/1000045246.jpg" alt="Blair Page" class="profile-img">
-    <div class="identity-info">
-      <h2>Blair Page (Burness Drake McCoy)</h2>
-      <p>Front-End Development & UX Design Intern — Premium Technologies UK</p>
-      <p>Hybrid Cloud Specialist | AWS Certified Solutions Architect – Associate (Renewal Scheduled) | AWS Certified Cloud Practitioner | RHCE6 | B.S. Business (105/120 Credits) | E-Commerce Full-Stack Developer</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/blairpagedrakemccoy/">💼 LinkedIn</a>
-        <a href="https://shocktherapyrebuilding.com/">🌐 Website</a>
-        <a href="https://github.com/Blairyfairy">🖥️ GitHub</a>
-      </div>
-    </div>
-  </section>
+<!-- ROI -->
+<section id="roi" class="section">
+<div class="card">
 
-  <!-- MATRIX CARDS -->
-  <section class="matrix-grid">
+<h2>Advanced ROI + Profit Engine</h2>
 
-    <!-- EXPERIENCE MATRIX CARD -->
-    <div class="matrix-card">
-      <button class="card-toggle" aria-expanded="false">
-        Experience Overview <span class="expand-icon">▼</span>
-      </button>
-      <div class="card-content">
-        <ul>
-          <li>Front-End Development & UX Design Intern at Premium Technologies UK — React, Tailwind, UI/UX Design</li>
-          <li>Hybrid Cloud Specialist — AWS Solutions Architect, Multi-AZ deployments, Cloud Scalability</li>
-          <li>Full-Stack E-Commerce Development — Magento 2, Persistent Cart, Dual Redis Caching</li>
-          <li>DevOps & Server Management — RHCE6 Linux Administration, Docker Containers</li>
-        </ul>
-      </div>
-    </div>
+<label>Ad Spend ($)</label>
+<input type="range" id="ad" min="500" max="100000" value="5000">
 
-    <!-- CERTIFICATIONS MATRIX CARD -->
-    <div class="matrix-card">
-      <button class="card-toggle" aria-expanded="false">
-        Certifications <span class="expand-icon">▼</span>
-      </button>
-      <div class="card-content">
-        <ul>
-          <li>AWS Certified Solutions Architect – Associate</li>
-          <li>AWS Certified Cloud Practitioner</li>
-          <li>RHCE6 — Red Hat Certified Engineer</li>
-        </ul>
-      </div>
-    </div>
+<label>Conversion Rate (%)</label>
+<input type="range" id="conv" min="1" max="12" value="3">
 
-    <!-- EDUCATION MATRIX CARD -->
-    <div class="matrix-card">
-      <button class="card-toggle" aria-expanded="false">
-        Education <span class="expand-icon">▼</span>
-      </button>
-      <div class="card-content">
-        <ul>
-          <li>B.S. Business, University of the People — 105/120 Credits Completed</li>
-          <li>Lansing Community College — Various courses in cloud computing and development</li>
-          <li>MongoDB University — Database design and management</li>
-          <li>Rackspace Cloud University — Cloud architecture and virtualization</li>
-        </ul>
-      </div>
-    </div>
+<label>Average Order Value ($)</label>
+<input type="range" id="aov" min="20" max="500" value="80">
 
-    <!-- PROJECT MATRIX CARD -->
-    <div class="matrix-card">
-      <button class="card-toggle" aria-expanded="false">
-        Projects & Portfolio <span class="expand-icon">▼</span>
-      </button>
-      <div class="card-content">
-        <ul>
-          <li>SkySight Weather Dashboard — Responsive UI, JS/HTML/CSS, Live Weather API Integration</li>
-          <li>NeonGridLegalV1 — Front-End Refactoring & UX Design Improvements</li>
-          <li>ShockTherapyRebuilding.com — Full-stack e-commerce updates, performance optimization</li>
-          <li>Blog & Portfolio Development — SEO optimization, interactive infographics</li>
-        </ul>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- TIMELINE / EXPERIENCE -->
-  <section class="timeline">
-    <h2>Experience Timeline</h2>
-
-    <div class="timeline-item">
-      <div class="job-logo"><img src="https://via.placeholder.com/120x60?text=Premium+Tech" alt="Premium Technologies UK"></div>
-      <div class="timeline-content">
-        <h4>Front-End Development & UX Design Intern — Premium Technologies UK</h4>
-        <p class="timeline-date">2026 – Present</p>
-        <ul class="project-list">
-          <li>React/Tailwind front-end for enterprise dashboards</li>
-          <li>UX improvements for user workflow and navigation</li>
-          <li>Implemented interactive infographics reflecting job experience</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="job-logo"><img src="https://via.placeholder.com/120x60?text=AWS" alt="AWS"></div>
-      <div class="timeline-content">
-        <h4>Hybrid Cloud Specialist / AWS Certified Solutions Architect</h4>
-        <p class="timeline-date">2025 – 2026</p>
-        <ul class="project-list">
-          <li>Multi-AZ deployment architecture design</li>
-          <li>Enterprise cloud scalability and persistent services</li>
-          <li>Cloud infrastructure optimization for performance and cost</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="job-logo"><img src="https://via.placeholder.com/120x60?text=Magento" alt="Magento 2"></div>
-      <div class="timeline-content">
-        <h4>E-Commerce Full-Stack Developer</h4>
-        <p class="timeline-date">2024 – 2025</p>
-        <ul class="project-list">
-          <li>Magento 2 deployment on AWS Multi-AZ</li>
-          <li>Dual Redis caching for session persistence</li>
-          <li>Performance monitoring and optimization</li>
-        </ul>
-      </div>
-    </div>
-
-  </section>
-
+<div>
+<button onclick="setMode(1)">No Spend</button>
+<button onclick="setMode(2)">Baseline</button>
+<button onclick="setMode(3)">Optimized</button>
+<button onclick="setMode(4)">Scale</button>
 </div>
 
+<h2 id="revenue">$0</h2>
+
+<div class="metrics">
+<div class="metric"><b id="clicks"></b><br>Clicks</div>
+<div class="metric"><b id="orders"></b><br>Orders</div>
+<div class="metric"><b id="cpa"></b><br>CPA</div>
+<div class="metric"><b id="roas"></b><br>ROAS</div>
+<div class="metric"><b id="profit"></b><br>Profit</div>
+<div class="metric"><b id="ltv"></b><br>LTV</div>
+</div>
+
+<canvas id="growth"></canvas>
+
+</div>
+</section>
+
+<!-- DATA -->
+<section id="data" class="section">
+
+<div class="card"><h3>Spend Allocation</h3><canvas id="pie"></canvas></div>
+<div class="card"><h3>Platform ROI</h3><canvas id="bar"></canvas></div>
+<div class="card"><h3>Growth Scenarios</h3><canvas id="compare"></canvas></div>
+<div class="card"><h3>LTV vs CAC</h3><canvas id="ltvChart"></canvas></div>
+<div class="card"><h3>Funnel</h3><canvas id="funnel"></canvas></div>
+<div class="card"><h3>Traffic Mix</h3><canvas id="traffic"></canvas></div>
+<div class="card"><h3>Retention Curve</h3><canvas id="retention"></canvas></div>
+
+</section>
+
+<!-- INTELLIGENCE -->
+<section id="intel" class="section">
+<div class="card">
+<h2>Decision Intelligence</h2>
+
+<p>
+• CAC must stay below LTV to scale profitably<br>
+• Conversion improvements outperform ad spend increases<br>
+• UX latency directly reduces revenue (1s delay = ~7% drop)<br>
+• Retention compounds revenue faster than acquisition<br>
+• Email/SMS flows generate 20–40% total revenue<br>
+</p>
+
+<p>
+<strong>Why scale?</strong><br>
+Predictable revenue, compounding growth, higher valuation
+</p>
+
+<p>
+<strong>Why not?</strong><br>
+High CAC, poor UX, low retention, weak margins
+</p>
+
+</div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms" class="section">
+<div class="grid">
+
+<div class="card">
+<h3>Magento</h3>
+<p>Best for enterprise catalogs, multi-store scaling, advanced infra</p>
+</div>
+
+<div class="card">
+<h3>Shopify</h3>
+<p>Fastest to launch, strong ecosystem, high conversion baseline</p>
+</div>
+
+<div class="card">
+<h3>WooCommerce</h3>
+<p>Flexible + cost-effective, strong for SMB</p>
+</div>
+
+<div class="card">
+<h3>Headless</h3>
+<p>Maximum performance, modern architecture, API-first</p>
+</div>
+
+</div>
+</section>
+
+<button id="topBtn">↑</button>
+
 <script>
-  // Matrix Card Toggle
-  document.querySelectorAll('.card-toggle').forEach(button => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.matrix-card');
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !expanded);
-      card.classList.toggle('open');
-    });
-  });
+let mode=2;
+
+function setMode(m){mode=m;update();}
+
+function v(id){return parseFloat(document.getElementById(id).value)||0;}
+
+function update(){
+
+let ad=v("ad");
+let conv=v("conv")/100;
+let aov=v("aov");
+
+let cpc=1.5;
+let clicks=ad/cpc;
+let orders=clicks*conv;
+let revenue=orders*aov;
+
+// scaling logic
+if(mode===1) revenue*=0.5;
+if(mode===3) revenue*=1.8;
+if(mode===4) revenue*=3;
+
+// advanced metrics
+let cpa=ad/(orders||1);
+let roas=revenue/ad;
+let margin=0.3;
+let profit=revenue*margin-ad;
+let ltv=aov*2.5;
+
+// UI
+revenueUI("$"+Math.round(revenue));
+set("clicks",clicks);
+set("orders",orders);
+set("cpa","$"+Math.round(cpa));
+set("roas",roas.toFixed(2)+"x");
+set("profit","$"+Math.round(profit));
+set("ltv","$"+Math.round(ltv));
+
+// growth
+let arr=[];
+for(let i=1;i<=12;i++){
+arr.push(Math.round(revenue*i*0.7));
+}
+growth.data.datasets[0].data=arr;
+growth.update();
+}
+
+function set(id,val){
+document.getElementById(id).innerText=Math.round(val);
+}
+
+function revenueUI(val){
+document.getElementById("revenue").innerText=val;
+}
+
+// charts
+let growth=new Chart(document.getElementById("growth"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[{label:"Revenue Growth",data:[]}]}
+});
+
+new Chart(document.getElementById("pie"),{
+type:"pie",
+data:{labels:["Ads","UX","Email","Infra"],
+datasets:[{data:[40,25,20,15]}]}
+});
+
+new Chart(document.getElementById("bar"),{
+type:"bar",
+data:{labels:["Magento","Shopify","Woo","Headless"],
+datasets:[{label:"ROI Score",data:[90,75,65,95]}]}
+});
+
+new Chart(document.getElementById("compare"),{
+type:"line",
+data:{
+labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[
+{label:"No Spend",data:[100,200,300,400,500,600,700,800,900,1000,1100,1200]},
+{label:"Invest",data:[500,2000,5000,9000,15000,22000,30000,40000,55000,70000,90000,120000]},
+{label:"Optimized",data:[1000,4000,10000,25000,50000,90000,140000,200000,270000,350000,450000,600000]}
+]
+}
+});
+
+new Chart(document.getElementById("ltvChart"),{
+type:"line",
+data:{
+labels:[1,2,3,4,5,6,7,8],
+datasets:[
+{label:"CAC",data:[50,50,50,50,50,50,50,50]},
+{label:"LTV",data:[60,100,150,220,300,380,470,600]}
+]
+}
+});
+
+new Chart(document.getElementById("funnel"),{
+type:"bar",
+data:{labels:["Visitors","Views","Cart","Checkout","Purchase"],
+datasets:[{data:[10000,6000,3000,1500,900]}]}
+});
+
+new Chart(document.getElementById("traffic"),{
+type:"doughnut",
+data:{labels:["Ads","Organic","Email","Direct"],
+datasets:[{data:[35,30,20,15]}]}
+});
+
+new Chart(document.getElementById("retention"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[{label:"Retention %",data:[10,15,20,25,30,35,40,42,45,48,50,55]}]}
+});
+
+// scroll
+let btn=document.getElementById("topBtn");
+window.onscroll=()=>btn.style.display=window.scrollY>200?"block":"none";
+btn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+document.querySelectorAll("input").forEach(i=>i.addEventListener("input",update));
+
+update();
 </script>
+
 </body>
 </html>
