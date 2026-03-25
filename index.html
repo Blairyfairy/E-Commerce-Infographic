@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Investment Infographic</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0a192f, #0f3057);
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric h2 {
+  font-size: 2rem;
+  color: #00d4ff;
+}
+
+.highlight {
+  color: #00ffa6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: rgba(0,0,0,0.4);
+}
+
+tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📊 E-Commerce Investment Infographic</h1>
+  <p>Expected ROI vs Platform Investment Strategy</p>
+</header>
+
+<div class="container">
+
+  <!-- Investment Overview -->
+  <div class="card">
+    <h2>💰 Investment Tiers</h2>
+    <div class="grid">
+
+      <div class="metric">
+        <h2>$0 - $1K</h2>
+        <p>No Ads / DIY Setup</p>
+        <p class="highlight">Low Growth</p>
+      </div>
+
+      <div class="metric">
+        <h2>$5K - $20K</h2>
+        <p>Moderate Ads + Dev</p>
+        <p class="highlight">Stable ROI</p>
+      </div>
+
+      <div class="metric">
+        <h2>$50K+</h2>
+        <p>Full Marketing + Scaling</p>
+        <p class="highlight">High ROI</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROI Chart -->
+  <div class="card">
+    <h2>📈 ROI Projection (12 Months)</h2>
+    <canvas id="roiChart"></canvas>
+  </div>
+
+  <!-- Spend vs No Spend -->
+  <div class="card">
+    <h2>⚖️ Spend vs No Spend</h2>
+    <canvas id="comparisonChart"></canvas>
+  </div>
+
+  <!-- Platform Comparison -->
+  <div class="card">
+    <h2>🧠 Platform Investment Comparison</h2>
+    <table>
+      <tr>
+        <th>Platform</th>
+        <th>Startup Cost</th>
+        <th>Scalability</th>
+        <th>Best Use</th>
+      </tr>
+      <tr>
+        <td>Magento</td>
+        <td>$20K+</td>
+        <td>🔥 Enterprise</td>
+        <td>Large Business</td>
+      </tr>
+      <tr>
+        <td>WooCommerce</td>
+        <td>$1K - $10K</td>
+        <td>⚖️ Moderate</td>
+        <td>SMB</td>
+      </tr>
+      <tr>
+        <td>Shopify</td>
+        <td>$500 - $5K</td>
+        <td>⚡ Fast Scaling</td>
+        <td>Startups</td>
+      </tr>
+      <tr>
+        <td>Drupal Commerce</td>
+        <td>$10K+</td>
+        <td>🧠 Flexible</td>
+        <td>Custom Builds</td>
+      </tr>
+      <tr>
+        <td>Django Commerce</td>
+        <td>$15K+</td>
+        <td>🚀 Custom Scalable</td>
+        <td>Tech-Heavy Teams</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">
+  Built for Portfolio • Front-End Development & UX Design
+</div>
+
+<script>
+const roiCtx = document.getElementById('roiChart').getContext('2d');
+
+new Chart(roiCtx, {
+  type: 'line',
+  data: {
+    labels: ['Month 1','2','3','4','5','6','7','8','9','10','11','12'],
+    datasets: [
+      {
+        label: 'Low Investment',
+        data: [100,200,300,400,500,600,700,800,900,1000,1100,1200],
+        borderWidth: 2
+      },
+      {
+        label: 'Medium Investment',
+        data: [500,1000,2000,3500,5000,7000,9000,12000,15000,18000,22000,26000],
+        borderWidth: 2
+      },
+      {
+        label: 'High Investment',
+        data: [2000,5000,10000,20000,35000,50000,70000,90000,120000,150000,180000,220000],
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: "#fff" } }
+    },
+    scales: {
+      x: { ticks: { color: "#fff" } },
+      y: { ticks: { color: "#fff" } }
+    }
+  }
+});
+
+const compareCtx = document.getElementById('comparisonChart').getContext('2d');
+
+new Chart(compareCtx, {
+  type: 'bar',
+  data: {
+    labels: ['No Spend', 'Moderate Spend', 'High Spend'],
+    datasets: [{
+      label: 'Revenue Potential',
+      data: [1000, 20000, 200000],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { labels: { color: "#fff" } }
+    },
+    scales: {
+      x: { ticks: { color: "#fff" } },
+      y: { ticks: { color: "#fff" } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
