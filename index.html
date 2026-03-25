@@ -171,12 +171,13 @@ button {
 <a href="#data">Data</a>
 <a href="#intel">Intelligence</a>
 <a href="#platforms">Platforms</a>
+<a href="#cloud">Cloud & Integrations</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1>E-Commerce Growth Engine</h1>
-  <p>Modern ROI Intelligence • 2026 Market Reality • Conversion • LTV • Retention • Forecasting</p>
+  <p>Modern ROI Intelligence • 2026 Market Reality • Conversion • LTV • Retention • Forecasting • Trends</p>
 </section>
 
 <!-- STORY -->
@@ -189,7 +190,7 @@ privacy changes (iOS tracking restrictions), and algorithm saturation mean that
 <strong>businesses without structured investment plateau within 3–6 months</strong>.
 </p>
 <p>
-Key impact areas: organic search reach, email/SMS revenue contribution, UX latency, multi-channel retention, platform choice.
+Key impact areas: organic search reach, email/SMS revenue contribution, UX latency, multi-channel retention, platform choice, cloud performance.
 </p>
 </div>
 </section>
@@ -206,7 +207,9 @@ and performance infrastructure. Modern stacks leverage:
 • Fast infrastructure (CDN, caching, edge delivery)<br>
 • Lifecycle marketing (email/SMS automation)<br>
 • Retention flows and LTV optimization<br>
-• Forecasting and scenario modeling for spend vs revenue<br><br>
+• Forecasting and scenario modeling for spend vs revenue<br>
+• Cloud integrations (AWS, GCP, Azure)<br>
+• Real-time analytics & A/B testing<br><br>
 
 Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 </p>
@@ -243,6 +246,8 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 <div class="metric"><b id="roas"></b><br>ROAS</div>
 <div class="metric"><b id="profit"></b><br>Profit</div>
 <div class="metric"><b id="ltv"></b><br>LTV</div>
+<div class="metric"><b id="margin"></b><br>Profit Margin</div>
+<div class="metric"><b id="roiScore"></b><br>ROI Score</div>
 </div>
 
 <canvas id="chart"></canvas>
@@ -275,7 +280,10 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 • Retention compounds revenue faster than acquisition<br>
 • UX and speed now impact revenue as much as ad spend<br>
 • Forecasting revenue curves helps predict 3–12 month growth<br>
-• Organic traffic potential and paid mix trade-offs are critical
+• Organic traffic potential and paid mix trade-offs are critical<br>
+• Platform adoption (Shopify 4M stores, Magento 250K enterprise)<br>
+• Cloud integration preference: AWS 60%, GCP 25%, Azure 15%<br>
+• App/plugin uninstall trends can reduce efficiency and revenue
 </p>
 </div>
 </section>
@@ -288,24 +296,43 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 <div class="card">
 <h3>Magento / Adobe Commerce</h3>
 <p>Enterprise brands ($5M+ revenue). High dev cost but unmatched scalability,
-multi-store, and performance tuning. ROI strongest when paired with large ad budgets.</p>
+multi-store, and performance tuning. ROI strongest when paired with large ad budgets.
+Monthly cost: $2K – $15K, Popularity: High, Install base: 250K+</p>
 </div>
 
 <div class="card">
 <h3>Shopify / Shopify Plus</h3>
-<p>Fastest go-to-market. Ideal for DTC brands leveraging paid ads. Strong ecosystem but higher long-term SaaS cost.</p>
+<p>Fastest go-to-market. Ideal for DTC brands leveraging paid ads. Strong ecosystem but higher long-term SaaS cost.
+Monthly cost: $29 – $2K, Popularity: Very High, Install base: 4M+</p>
 </div>
 
 <div class="card">
 <h3>WooCommerce</h3>
-<p>Best cost-to-flexibility ratio. Strong for SMBs with moderate traffic and custom needs. Requires optimization to scale.</p>
+<p>Best cost-to-flexibility ratio. Strong for SMBs with moderate traffic and custom needs. Requires optimization to scale.
+Monthly cost: $0 – $500, Popularity: High, Install base: 3.8M+</p>
 </div>
 
 <div class="card">
 <h3>Headless (Next.js / Django)</h3>
-<p>Modern architecture. API-first, ultra-fast UX, ideal for high-performance scaling and global storefronts.</p>
+<p>Modern architecture. API-first, ultra-fast UX, ideal for high-performance scaling and global storefronts.
+Monthly cost: $500 – $5K, Popularity: Growing, Install base: 500K+</p>
 </div>
 
+</div>
+</section>
+
+<!-- CLOUD & INTEGRATIONS -->
+<section id="cloud" class="section fade">
+<div class="card">
+<h2>☁️ Cloud & Integration Tools</h2>
+<p>
+• AWS, GCP, Azure deployment options<br>
+• CDN: Cloudflare, Fastly, AWS CloudFront<br>
+• Payment Gateways: Stripe, PayPal, Adyen<br>
+• Marketing Integrations: Klaviyo, Mailchimp, HubSpot<br>
+• Analytics: GA4, Mixpanel, Amplitude<br>
+• Retention & CRM: Salesforce, HubSpot, Zoho
+</p>
 </div>
 </section>
 
@@ -343,6 +370,7 @@ function update(){
   let margin=0.3;
   let profit=revenue*margin-ad;
   let ltv=aov*2.5;
+  let roiScore=revenue/ad;
 
   document.getElementById("revenue").innerText="$"+Math.round(revenue);
   set("clicks",clicks);
@@ -351,6 +379,8 @@ function update(){
   set("roas",roas.toFixed(2)+"x");
   set("profit","$"+Math.round(profit));
   set("ltv","$"+Math.round(ltv));
+  set("margin",margin*100+"%");
+  set("roiScore",roiScore.toFixed(2));
 
   let growth=[];
   for(let i=1;i<=12;i++) growth.push(Math.round(revenue*i*0.7));
