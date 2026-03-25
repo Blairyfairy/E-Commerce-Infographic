@@ -23,6 +23,31 @@ body {
   overflow-x:hidden;
 }
 
+/* NAVIGATION */
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  padding:10px;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+  flex-wrap:wrap;
+}
+nav a {
+  color:#fff;
+  text-decoration:none;
+  font-size:.8rem;
+  opacity:.7;
+}
+nav a:hover {
+  opacity:1;
+  color:var(--accent);
+}
+
 /* PARALLAX HERO */
 .hero {
   height:100vh;
@@ -98,10 +123,55 @@ input[type=range] {
   font-size:2rem;
   color:var(--accent2);
 }
+
+/* METRICS GRID */
+.metrics {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+
+.metric {
+  background:rgba(255,255,255,0.05);
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+}
+
+button {
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:linear-gradient(90deg,#00e0ff,#00ffa6);
+  cursor:pointer;
+  margin:4px;
+}
+
+#topBtn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(90deg,#00e0ff,#00ffa6);
+  display:none;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body>
+
+<!-- NAV -->
+<nav>
+<a href="#roi">ROI</a>
+<a href="#data">Data</a>
+<a href="#intel">Intelligence</a>
+<a href="#platforms">Platforms</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -143,8 +213,8 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 </div>
 </section>
 
-<!-- INTERACTIVE ENGINE -->
-<section class="section fade">
+<!-- ROI -->
+<section id="roi" class="section fade">
 <div class="card">
 <h2>🎯 Live ROI Simulator</h2>
 
@@ -157,55 +227,41 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 <div class="label">Avg Order Value ($)</div>
 <input type="range" min="20" max="300" value="80" id="aov">
 
+<div>
+<button onclick="setMode(1)">No Spend</button>
+<button onclick="setMode(2)">Baseline</button>
+<button onclick="setMode(3)">Optimized</button>
+<button onclick="setMode(4)">Scale</button>
+</div>
+
 <h2 id="output"></h2>
+
+<div class="metrics">
+<div class="metric"><b id="clicks"></b><br>Clicks</div>
+<div class="metric"><b id="orders"></b><br>Orders</div>
+<div class="metric"><b id="cpa"></b><br>CPA</div>
+<div class="metric"><b id="roas"></b><br>ROAS</div>
+<div class="metric"><b id="profit"></b><br>Profit</div>
+<div class="metric"><b id="ltv"></b><br>LTV</div>
+</div>
 
 <canvas id="chart"></canvas>
 </div>
 </section>
 
-<!-- PLATFORM INTEL -->
-<section class="section fade">
-<h2>🧠 Platform Strategy (Modern Use Cases)</h2>
-<div class="grid">
-
-<div class="card">
-<h3>Magento / Adobe Commerce</h3>
-<p>
-Enterprise brands ($5M+ revenue). High dev cost but unmatched scalability,
-multi-store, and performance tuning. ROI strongest when paired with large ad budgets.
-Includes retention flows, LTV optimization, and organic/paid mix analysis.
-</p>
-</div>
-
-<div class="card">
-<h3>Shopify / Shopify Plus</h3>
-<p>
-Fastest go-to-market. Ideal for DTC brands leveraging paid ads.
-Strong ecosystem but higher long-term SaaS cost. Supports email/SMS automation and CRO experiments.
-</p>
-</div>
-
-<div class="card">
-<h3>WooCommerce</h3>
-<p>
-Best cost-to-flexibility ratio. Strong for SMBs with moderate traffic and custom needs.
-Requires optimization to scale. Good for organic search traffic and smaller LTV experiments.
-</p>
-</div>
-
-<div class="card">
-<h3>Headless (Next.js / Django)</h3>
-<p>
-Modern architecture. API-first, ultra-fast UX, ideal for high-performance scaling
-and global storefronts. Supports all analytics, forecasting, and multi-channel campaigns.
-</p>
-</div>
-
-</div>
+<!-- DATA -->
+<section id="data" class="section fade">
+<div class="card"><h3>Spend Allocation</h3><canvas id="pie"></canvas></div>
+<div class="card"><h3>Platform ROI</h3><canvas id="bar"></canvas></div>
+<div class="card"><h3>Growth Scenarios</h3><canvas id="compare"></canvas></div>
+<div class="card"><h3>LTV vs CAC</h3><canvas id="ltvChart"></canvas></div>
+<div class="card"><h3>Funnel</h3><canvas id="funnel"></canvas></div>
+<div class="card"><h3>Traffic Mix</h3><canvas id="traffic"></canvas></div>
+<div class="card"><h3>Retention Curve</h3><canvas id="retention"></canvas></div>
 </section>
 
-<!-- INSIGHTS -->
-<section class="section fade">
+<!-- INTELLIGENCE -->
+<section id="intel" class="section fade">
 <div class="card">
 <h2>📊 Key Market Insights (2026)</h2>
 
@@ -224,16 +280,36 @@ and global storefronts. Supports all analytics, forecasting, and multi-channel c
 </div>
 </section>
 
-<!-- ADDITIONAL CHARTS SECTION -->
-<section class="section fade">
+<!-- PLATFORMS -->
+<section id="platforms" class="section fade">
+<h2>🧠 Platform Strategy (Modern Use Cases)</h2>
+<div class="grid">
+
 <div class="card">
-<h2>📈 Forecasted Growth & ROI Metrics</h2>
-<canvas id="growthChart"></canvas>
-<p style="margin-top:10px;font-size:.85rem;color:#00ffa6;">
-Includes Revenue Growth, LTV vs CAC, Funnel Conversion, Traffic Mix, and Retention Curves.
-</p>
+<h3>Magento / Adobe Commerce</h3>
+<p>Enterprise brands ($5M+ revenue). High dev cost but unmatched scalability,
+multi-store, and performance tuning. ROI strongest when paired with large ad budgets.</p>
+</div>
+
+<div class="card">
+<h3>Shopify / Shopify Plus</h3>
+<p>Fastest go-to-market. Ideal for DTC brands leveraging paid ads. Strong ecosystem but higher long-term SaaS cost.</p>
+</div>
+
+<div class="card">
+<h3>WooCommerce</h3>
+<p>Best cost-to-flexibility ratio. Strong for SMBs with moderate traffic and custom needs. Requires optimization to scale.</p>
+</div>
+
+<div class="card">
+<h3>Headless (Next.js / Django)</h3>
+<p>Modern architecture. API-first, ultra-fast UX, ideal for high-performance scaling and global storefronts.</p>
+</div>
+
 </div>
 </section>
+
+<button id="topBtn">↑</button>
 
 <script>
 // INTERSECTION OBSERVER
@@ -242,62 +318,106 @@ const obs = new IntersectionObserver(e=>{
 });
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 
-// CHART
-let ctx = document.getElementById('chart');
-let chart = new Chart(ctx, {
-  type:'line',
-  data:{labels:[...Array(12).keys()],
-  datasets:[{label:'Revenue Growth',data:[],borderWidth:2}]},
-  options:{
-    plugins:{legend:{labels:{color:"#fff"}}},
-    scales:{x:{ticks:{color:"#fff"}},y:{ticks:{color:"#fff"}}}
-  }
-});
+// SIMULATOR & CALC ENGINE
+let mode=2;
+function setMode(m){mode=m;update();}
 
-// ADDITIONAL GROWTH CHART
-let growthCtx = document.getElementById('growthChart');
-let growthChart = new Chart(growthCtx, {
-  type:'line',
-  data:{
-    labels:[1,2,3,4,5,6,7,8,9,10,11,12],
-    datasets:[
-      {label:"Revenue Growth",data:[],borderWidth:2},
-      {label:"LTV vs CAC",data:[60,100,150,220,300,380,470,600,700,800,900,1000],borderWidth:2},
-      {label:"Funnel Conversion",data:[10000,6000,3000,1500,900,600,400,300,200,150,100,50],borderWidth:2},
-      {label:"Traffic Mix",data:[35,30,20,15,10,5,5,5,5,5,5,5],borderWidth:2},
-      {label:"Retention Curve",data:[10,15,20,25,30,35,40,42,45,48,50,55],borderWidth:2}
-    ]
-  },
-  options:{
-    plugins:{legend:{labels:{color:"#fff"}}},
-    scales:{x:{ticks:{color:"#fff"}},y:{ticks:{color:"#fff"}}}
-  }
-});
+function v(id){return parseFloat(document.getElementById(id).value)||0;}
 
-// CALC ENGINE
 function update(){
-  let ad = document.getElementById('ad').value;
-  let conv = document.getElementById('conv').value/100;
-  let aov = document.getElementById('aov').value;
+  let ad=v("ad");
+  let conv=v("conv")/100;
+  let aov=v("aov");
 
-  let visitors = ad / 1.2; // avg CPC
-  let sales = visitors * conv;
-  let revenue = sales * aov;
+  let cpc=1.5;
+  let clicks=ad/cpc;
+  let orders=clicks*conv;
+  let revenue=orders*aov;
 
-  document.getElementById('output').innerHTML =
-    "$" + revenue.toFixed(0) + " / month";
+  if(mode===1) revenue*=0.5;
+  if(mode===3) revenue*=1.8;
+  if(mode===4) revenue*=3;
 
-  let growth = [];
-  for(let i=1;i<=12;i++){
-    growth.push(revenue * i * 0.8);
-  }
+  let cpa=ad/(orders||1);
+  let roas=revenue/ad;
+  let margin=0.3;
+  let profit=revenue*margin-ad;
+  let ltv=aov*2.5;
 
-  chart.data.datasets[0].data = growth;
+  document.getElementById("revenue").innerText="$"+Math.round(revenue);
+  set("clicks",clicks);
+  set("orders",orders);
+  set("cpa","$"+Math.round(cpa));
+  set("roas",roas.toFixed(2)+"x");
+  set("profit","$"+Math.round(profit));
+  set("ltv","$"+Math.round(ltv));
+
+  let growth=[];
+  for(let i=1;i<=12;i++) growth.push(Math.round(revenue*i*0.7));
+  chart.data.datasets[0].data=growth;
   chart.update();
-
-  growthChart.data.datasets[0].data = growth;
-  growthChart.update();
 }
+
+function set(id,val){document.getElementById(id).innerText=Math.round(val);}
+
+// CHARTS
+let chart=new Chart(document.getElementById("chart"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{label:"Revenue Growth",data:[]}]}
+});
+
+new Chart(document.getElementById("pie"),{
+type:"pie",
+data:{labels:["Ads","UX","Email","Infra"],datasets:[{data:[40,25,20,15]}]}
+});
+
+new Chart(document.getElementById("bar"),{
+type:"bar",
+data:{labels:["Magento","Shopify","Woo","Headless"],datasets:[{label:"ROI Score",data:[90,75,65,95]}]}
+});
+
+new Chart(document.getElementById("compare"),{
+type:"line",
+data:{
+labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[
+{label:"No Spend",data:[100,200,300,400,500,600,700,800,900,1000,1100,1200]},
+{label:"Invest",data:[500,2000,5000,9000,15000,22000,30000,40000,55000,70000,90000,120000]},
+{label:"Optimized",data:[1000,4000,10000,25000,50000,90000,140000,200000,270000,350000,450000,600000]}
+]
+}
+});
+
+new Chart(document.getElementById("ltvChart"),{
+type:"line",
+data:{
+labels:[1,2,3,4,5,6,7,8],
+datasets:[
+{label:"CAC",data:[50,50,50,50,50,50,50,50]},
+{label:"LTV",data:[60,100,150,220,300,380,470,600]}
+]
+}
+});
+
+new Chart(document.getElementById("funnel"),{
+type:"bar",
+data:{labels:["Visitors","Views","Cart","Checkout","Purchase"],datasets:[{data:[10000,6000,3000,1500,900]}]}
+});
+
+new Chart(document.getElementById("traffic"),{
+type:"doughnut",
+data:{labels:["Ads","Organic","Email","Direct"],datasets:[{data:[35,30,20,15]}]}
+});
+
+new Chart(document.getElementById("retention"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{label:"Retention %",data:[10,15,20,25,30,35,40,42,45,48,50,55]}]}
+});
+
+// SCROLL TO TOP
+let btn=document.getElementById("topBtn");
+window.onscroll=()=>btn.style.display=window.scrollY>200?"block":"none";
+btn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 
 document.querySelectorAll("input").forEach(i=>i.addEventListener("input",update));
 update();
