@@ -4,101 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>E-Commerce ROI Experience | Investment vs Growth Infographic</title>
-
-<meta name="description" content="Interactive e-commerce ROI calculator, platform comparison, CAC, ROAS, CRO benchmarks, Shopify Magento WooCommerce performance modeling and growth projections.">
+<title>E-Commerce ROI Intelligence | Growth Infographic</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-:root {
-  --bg:#04060c;
-  --glass:rgba(255,255,255,0.06);
-  --accent:#00e0ff;
-  --accent2:#00ffa6;
+:root{
+--bg:#04060c;
+--glass:rgba(255,255,255,0.06);
+--accent:#00e0ff;
+--accent2:#00ffa6;
 }
 
-* {margin:0;padding:0;box-sizing:border-box;font-family:Inter, sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter, sans-serif;
+}
 
-body {
-  background: radial-gradient(circle at top, #0a1f3c, #04060c);
-  color:white;
-  scroll-behavior:smooth;
+html,body{
+overflow-x:hidden;
+max-width:100%;
+}
+
+body{
+background:radial-gradient(circle at top,#0a1f3c,#04060c);
+color:#fff;
 }
 
 /* NAV */
-nav {
-  position:fixed;
-  top:0;
-  width:100%;
-  backdrop-filter:blur(15px);
-  background:rgba(0,0,0,0.5);
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:15px;
-  z-index:1000;
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:16px;
+padding:12px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
+z-index:1000;
+flex-wrap:wrap;
 }
-nav a {color:white;text-decoration:none;font-size:.9rem;opacity:.7;}
-nav a:hover {opacity:1;color:var(--accent);}
+nav a{
+color:#fff;
+text-decoration:none;
+font-size:.8rem;
+opacity:.7;
+}
+nav a:hover{opacity:1;color:var(--accent);}
 
 /* HERO */
-.hero {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
-.hero h1 {
-  font-size:4rem;
-  background:linear-gradient(90deg,#00e0ff,#00ffa6);
-  -webkit-background-clip:text;
-  color:transparent;
+.hero h1{
+font-size:clamp(2rem,5vw,3.5rem);
+background:linear-gradient(90deg,#00e0ff,#00ffa6);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-/* SECTIONS */
-.section {padding:100px 20px;max-width:1200px;margin:auto;}
-.card {
-  background:var(--glass);
-  border-radius:20px;
-  padding:30px;
-  backdrop-filter:blur(20px);
-  box-shadow:0 0 50px rgba(0,0,0,0.6);
-  transition:.4s;
+/* SECTION */
+.section{
+padding:50px 15px;
+max-width:1100px;
+margin:auto;
 }
-.card:hover {transform:translateY(-10px) scale(1.01);}
 
-.grid {display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+/* CARD */
+.card{
+background:var(--glass);
+border-radius:16px;
+padding:18px;
+backdrop-filter:blur(16px);
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+margin-bottom:20px;
+}
 
-.fade {opacity:0;transform:translateY(60px);transition:1s;}
-.visible {opacity:1;transform:translateY(0);}
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:15px;
+}
+
+/* INPUTS */
+input[type=range]{
+width:100%;
+margin:10px 0;
+}
 
 /* BUTTONS */
-button {
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  margin:5px;
-  cursor:pointer;
-  background:linear-gradient(90deg,#00e0ff,#00ffa6);
-  color:black;
+button{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+margin:4px;
+cursor:pointer;
+background:linear-gradient(90deg,#00e0ff,#00ffa6);
 }
 
-/* SCROLL TOP */
-#topBtn {
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:linear-gradient(90deg,#00e0ff,#00ffa6);
-  border:none;
-  font-size:20px;
-  cursor:pointer;
-  display:none;
+/* CANVAS FIX */
+canvas{
+width:100% !important;
+max-width:100%;
+}
+
+/* TOP BUTTON */
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:45px;
+height:45px;
+border-radius:50%;
+border:none;
+background:linear-gradient(90deg,#00e0ff,#00ffa6);
+display:none;
+cursor:pointer;
 }
 </style>
 </head>
@@ -106,132 +137,79 @@ button {
 <body>
 
 <nav>
-<a href="#roi">ROI Engine</a>
-<a href="#charts">Data Models</a>
+<a href="#roi">ROI</a>
+<a href="#charts">Data</a>
 <a href="#platforms">Platforms</a>
 <a href="#insights">Insights</a>
 </nav>
 
 <section class="hero">
-<h1>E-Commerce Growth Engine</h1>
-<p>Modern ROI Intelligence • 2026 Market Reality</p>
+<h1>E-Commerce Growth Intelligence</h1>
+<p>Performance • UX • Revenue Engineering</p>
 </section>
 
-<!-- ORIGINAL + EXPANDED -->
-<section id="roi" class="section fade">
+<!-- ROI -->
+<section id="roi" class="section">
 <div class="card">
-<h2>📉 The 2026 Reality</h2>
-<p>
-Organic-only e-commerce is no longer competitive. Rising CAC (Customer Acquisition Cost),
-privacy changes (iOS tracking restrictions), and algorithm saturation mean that
-<strong>businesses without structured investment plateau within 3–6 months</strong>.
-<br><br>
-Additional modern pressures include:
-<br>
-• Increased CPM volatility across Meta & Google Ads<br>
-• AI-generated content saturation reducing organic reach<br>
-• Rising competition in DTC markets<br>
-• Marketplace dominance (Amazon, Walmart)<br><br>
 
-Conclusion: <strong>Capital efficiency + UX optimization now determine survival.</strong>
-</p>
-</div>
-</section>
+<h2>🎯 ROI Simulator</h2>
 
-<section class="section fade">
-<div class="card">
-<h2>🚀 What Actually Scales Now</h2>
-<p>
-Winning brands combine paid acquisition, CRO (conversion rate optimization),
-and performance infrastructure. Modern stacks leverage:
-<br><br>
-• Paid Ads (Meta, Google, TikTok)<br>
-• Conversion UX improvements (1–3% → 4–8%)<br>
-• Fast infrastructure (CDN, caching, edge delivery)<br>
-• Lifecycle marketing (email/SMS automation)<br>
-• AI personalization (product recommendations, segmentation)<br>
-• First-party data strategies post-cookie era<br><br>
-
-Result: <span style="color:#00ffa6;font-size:1.5rem;">3x–12x revenue lift within 12 months</span>
-</p>
-</div>
-</section>
-
-<!-- ROI ENGINE -->
-<section class="section fade">
-<div class="card">
-<h2>🎯 Advanced ROI Simulator Engine</h2>
-
-<label>Ad Spend</label>
+<label>Ad Spend ($)</label>
 <input type="range" min="500" max="100000" value="5000" id="ad">
 
-<label>Conversion Rate</label>
+<label>Conversion Rate (%)</label>
 <input type="range" min="1" max="12" value="3" id="conv">
 
-<label>Average Order Value</label>
+<label>Average Order Value ($)</label>
 <input type="range" min="20" max="500" value="80" id="aov">
 
-<h2 id="output"></h2>
+<h3 id="output">$0/month</h3>
 
 <div>
-<button onclick="scenario(1)">No Spend</button>
-<button onclick="scenario(2)">Invest</button>
-<button onclick="scenario(3)">Optimized</button>
-<button onclick="scenario(4)">Aggressive Scale</button>
+<button onclick="setMode(1)">No Spend</button>
+<button onclick="setMode(2)">Invest</button>
+<button onclick="setMode(3)">Optimized</button>
+<button onclick="setMode(4)">Scale</button>
 </div>
 
-<canvas id="mainChart"></canvas>
+<canvas id="growthChart"></canvas>
+
 </div>
 </section>
 
-<!-- DATA VISUALIZATION -->
-<section id="charts" class="section fade">
-<div class="card">
-<h2>📊 Investment Allocation Model</h2>
-<canvas id="pie"></canvas>
-</div>
+<!-- DATA -->
+<section id="charts" class="section">
 
-<div class="card">
-<h2>📈 Platform ROI Potential</h2>
-<canvas id="bar"></canvas>
-</div>
+<div class="card"><h3>📊 Spend Allocation</h3><canvas id="pie"></canvas></div>
+<div class="card"><h3>📈 Platform ROI</h3><canvas id="bar"></canvas></div>
+<div class="card"><h3>📉 Growth Comparison</h3><canvas id="compare"></canvas></div>
+<div class="card"><h3>📊 LTV vs CAC</h3><canvas id="ltv"></canvas></div>
+<div class="card"><h3>📊 Funnel</h3><canvas id="funnel"></canvas></div>
+<div class="card"><h3>🌐 Traffic</h3><canvas id="traffic"></canvas></div>
+<div class="card"><h3>🔁 Retention</h3><canvas id="retention"></canvas></div>
 
-<div class="card">
-<h2>📉 Growth Curve Comparison</h2>
-<canvas id="compare"></canvas>
-</div>
-
-<div class="card">
-<h2>📊 CAC vs LTV Dynamics</h2>
-<canvas id="ltv"></canvas>
-</div>
 </section>
 
 <!-- PLATFORMS -->
-<section id="platforms" class="section fade">
-<h2>🧠 Platform Strategy (Modern Use Cases)</h2>
+<section id="platforms" class="section">
 <div class="grid">
-<div class="card"><h3>Magento / Adobe Commerce</h3><p>Enterprise scaling, complex catalogs, global infrastructure.</p></div>
-<div class="card"><h3>Shopify / Shopify Plus</h3><p>Fast deployment, high marketing velocity, strong integrations.</p></div>
-<div class="card"><h3>WooCommerce</h3><p>Flexible, cost-efficient, strong for SMB customization.</p></div>
-<div class="card"><h3>Headless (Next.js / Django)</h3><p>API-first, high-performance, future-proof architecture.</p></div>
+<div class="card"><h3>Magento</h3><p>Enterprise scaling</p></div>
+<div class="card"><h3>Shopify</h3><p>Fast growth</p></div>
+<div class="card"><h3>WooCommerce</h3><p>Flexible SMB</p></div>
+<div class="card"><h3>Headless</h3><p>Future-proof</p></div>
 </div>
 </section>
 
 <!-- INSIGHTS -->
-<section id="insights" class="section fade">
+<section id="insights" class="section">
 <div class="card">
-<h2>📊 Key Market Insights (2026)</h2>
+<h2>📊 2026 Insights</h2>
 <p>
-• Avg CPC: $0.80 – $2.50<br>
-• Conversion Rate Benchmark: 2% – 4% (optimized: 6%+)<br>
-• ROAS target: 2.5x – 6x<br>
-• Email/SMS revenue share: 20% – 40%<br>
-• Page speed impact: +1s delay = -7% conversions<br>
-• Returning customer value: 2x–5x higher LTV<br>
-• Subscription models increasing retention by 30%+<br><br>
-
-<strong>Insight:</strong> UX, retention, and infrastructure now impact revenue as much as ad spend.
+CPC: $0.80–$2.50<br>
+Conversion: 2–4% (6% optimized)<br>
+ROAS: 2.5–6x<br>
+Retention drives 40%+ revenue<br>
+Speed impacts conversion heavily
 </p>
 </div>
 </section>
@@ -239,80 +217,119 @@ Result: <span style="color:#00ffa6;font-size:1.5rem;">3x–12x revenue lift with
 <button id="topBtn">↑</button>
 
 <script>
-// ANIMATION
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})});
-document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
-
-// ROI ENGINE
+// SAFE VALUES
 let mode=2;
 
-function scenario(m){mode=m;update();}
+function setMode(m){mode=m;update();}
 
-function update(){
-let ad=ad.value;
-let convRate=conv.value/100;
-let avg=aov.value;
-
-let base=(ad/1.2)*convRate*avg;
-
-if(mode===1) base*=0.5;
-if(mode===2) base*=1;
-if(mode===3) base*=2;
-if(mode===4) base*=3.5;
-
-output.innerHTML="$"+base.toFixed(0)+"/month";
-
-let growth=[];
-for(let i=1;i<=12;i++){growth.push(base*i*0.8);}
-mainChart.data.datasets[0].data=growth;
-mainChart.update();
+function getVal(id){
+return parseFloat(document.getElementById(id).value)||0;
 }
 
-document.querySelectorAll("input").forEach(i=>i.addEventListener("input",update));
+// ROI CALC
+function update(){
+
+let ad=getVal("ad");
+let conv=getVal("conv")/100;
+let aov=getVal("aov");
+
+let clicks=ad/1.5;
+let orders=clicks*conv;
+let revenue=orders*aov;
+
+// SCENARIOS
+if(mode===1) revenue*=0.5;
+if(mode===3) revenue*=1.8;
+if(mode===4) revenue*=3;
+
+document.getElementById("output").innerText=
+"$"+Math.round(revenue).toLocaleString()+"/month";
+
+// GROWTH DATA
+let data=[];
+for(let i=1;i<=12;i++){
+data.push(Math.round(revenue*i*0.6));
+}
+
+growthChart.data.datasets[0].data=data;
+growthChart.update();
+}
+
+// EVENTS
+document.querySelectorAll("input").forEach(i=>{
+i.addEventListener("input",update);
+});
 
 // CHARTS
-let mainChart=new Chart(document.getElementById('mainChart'),{
-type:'line',
-data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{label:'Projected Growth',data:[]}]}
+let growthChart=new Chart(document.getElementById("growthChart"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[{label:"Growth",data:[]}]}
 });
 
-new Chart(document.getElementById('pie'),{
-type:'pie',
-data:{labels:['Ads','UX','Email','Infra','AI'],datasets:[{data:[35,20,20,15,10]}]}
+new Chart(document.getElementById("pie"),{
+type:"pie",
+data:{labels:["Ads","UX","Email","Infra"],
+datasets:[{data:[40,25,20,15]}]}
 });
 
-new Chart(document.getElementById('bar'),{
-type:'bar',
-data:{labels:['Magento','Shopify','Woo','Headless'],datasets:[{label:'ROI',data:[90,75,65,95]}]}
+new Chart(document.getElementById("bar"),{
+type:"bar",
+data:{labels:["Magento","Shopify","Woo","Headless"],
+datasets:[{label:"ROI",data:[90,75,65,95]}]}
 });
 
-new Chart(document.getElementById('compare'),{
-type:'line',
+new Chart(document.getElementById("compare"),{
+type:"line",
 data:{
 labels:[1,2,3,4,5,6,7,8,9,10,11,12],
 datasets:[
-{label:'No Spend',data:[100,150,200,250,300,350,400,450,500,550,600,650]},
-{label:'Invest',data:[500,1000,2500,5000,9000,15000,22000,30000,40000,55000,70000,90000]},
-{label:'Optimized',data:[1000,3000,7000,15000,30000,60000,90000,130000,180000,240000,300000,400000]}
+{label:"No Spend",data:[100,200,300,400,500,600,700,800,900,1000,1100,1200]},
+{label:"Invest",data:[500,2000,5000,9000,15000,22000,30000,40000,55000,70000,90000,120000]},
+{label:"Optimized",data:[1000,4000,10000,25000,50000,90000,140000,200000,270000,350000,450000,600000]}
 ]
 }
 });
 
-new Chart(document.getElementById('ltv'),{
-type:'line',
+new Chart(document.getElementById("ltv"),{
+type:"line",
 data:{
 labels:[1,2,3,4,5,6,7,8],
 datasets:[
-{label:'CAC',data:[50,50,50,50,50,50,50,50]},
-{label:'LTV',data:[60,90,120,180,250,320,400,500]}
+{label:"CAC",data:[50,50,50,50,50,50,50,50]},
+{label:"LTV",data:[60,100,150,220,300,380,470,600]}
 ]
+}
+});
+
+new Chart(document.getElementById("funnel"),{
+type:"bar",
+data:{
+labels:["Visitors","Views","Cart","Checkout","Purchase"],
+datasets:[{data:[10000,6000,3000,1500,900]}]
+}
+});
+
+new Chart(document.getElementById("traffic"),{
+type:"doughnut",
+data:{
+labels:["Ads","Organic","Email","Direct"],
+datasets:[{data:[35,30,20,15]}]
+}
+});
+
+new Chart(document.getElementById("retention"),{
+type:"line",
+data:{
+labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[{label:"Retention %",data:[10,15,20,25,30,35,40,42,45,48,50,55]}]
 }
 });
 
 // SCROLL TOP
-const btn=document.getElementById("topBtn");
-window.onscroll=()=>{btn.style.display=window.scrollY>300?"block":"none"};
-btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+let btn=document.getElementById("topBtn");
+window.onscroll=()=>btn.style.display=window.scrollY>200?"block":"none";
+btn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 
 update();
 </script>
