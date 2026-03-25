@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,7 +57,7 @@ nav a:hover {
   align-items:center;
   text-align:center;
   background: radial-gradient(circle, rgba(0,224,255,0.15), transparent);
-  padding: 0 20px;
+  padding:0 10px;
 }
 
 .hero h1 {
@@ -66,11 +65,10 @@ nav a:hover {
   background:linear-gradient(90deg,#00e0ff,#00ffa6);
   -webkit-background-clip:text;
   color:transparent;
-  max-width: 90%;
-  line-height: 1.1;
+  line-height:1.1;
 }
 
-.hero p {opacity:.7;margin-top:10px}
+.hero p {opacity:.7;margin-top:10px; font-size:1rem;}
 
 /* PARALLAX */
 .parallax {
@@ -165,21 +163,21 @@ button {
   cursor:pointer;
 }
 
-@media(max-width:600px){
-  .hero h1{font-size:2.4rem; line-height:1.2;}
-  .hero p{font-size:.9rem;}
-  nav a{font-size:.7rem;}
-  .section{padding:60px 10px;}
-  .card{padding:20px;}
+/* MOBILE ADJUSTMENTS */
+@media (max-width:768px){
+  .hero h1 {font-size:2.5rem;}
+  .hero p {font-size:.9rem;}
+  nav a {font-size:.7rem; margin:3px;}
+  .section {padding:60px 15px;}
+  .card {padding:20px;}
+  .metrics {grid-template-columns:repeat(auto-fit,minmax(100px,1fr));}
 }
 </style>
-
 </head>
 
 <body>
 
 <!-- NAV -->
-
 <nav>
 <a href="#roi">ROI</a>
 <a href="#data">Data</a>
@@ -189,14 +187,12 @@ button {
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
   <h1>E-Commerce Growth Engine</h1>
   <p>Modern ROI Intelligence • 2026 Market Reality • Conversion • LTV • Retention • Forecasting • Trends</p>
 </section>
 
 <!-- STORY -->
-
 <section class="section fade">
 <div class="card">
 <h2>📉 The 2026 Reality</h2>
@@ -228,13 +224,11 @@ and performance infrastructure. Modern stacks leverage:
 • Real-time analytics & A/B testing<br><br>
 
 Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
-
 </p>
 </div>
 </section>
 
 <!-- ROI -->
-
 <section id="roi" class="section fade">
 <div class="card">
 <h2>🎯 Live ROI Simulator</h2>
@@ -270,12 +264,10 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 </div>
 
 <canvas id="chart"></canvas>
-
 </div>
 </section>
 
 <!-- DATA -->
-
 <section id="data" class="section fade">
 <div class="card"><h3>Spend Allocation</h3><canvas id="pie"></canvas></div>
 <div class="card"><h3>Platform ROI</h3><canvas id="bar"></canvas></div>
@@ -287,7 +279,6 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 </section>
 
 <!-- INTELLIGENCE -->
-
 <section id="intel" class="section fade">
 <div class="card">
 <h2>📊 Key Market Insights (2026)</h2>
@@ -311,7 +302,6 @@ Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
 </section>
 
 <!-- PLATFORMS -->
-
 <section id="platforms" class="section fade">
 <h2>🧠 Platform Strategy (Modern Use Cases)</h2>
 <div class="grid">
@@ -345,7 +335,6 @@ Monthly cost: $500 – $5K, Popularity: Growing, Install base: 500K+</p>
 </section>
 
 <!-- CLOUD & INTEGRATIONS -->
-
 <section id="cloud" class="section fade">
 <div class="card">
 <h2>☁️ Cloud & Integration Tools</h2>
@@ -455,5 +444,27 @@ datasets:[
 
 new Chart(document.getElementById("funnel"),{
 type:"bar",
-data:{labels:["Visitors","Views","Cart","Checkout","Purchase"],datasets:[{data:[10000,
+data:{labels:["Visitors","Views","Cart","Checkout","Purchase"],datasets:[{data:[10000,6000,3000,1500,900]}]}
+});
 
+new Chart(document.getElementById("traffic"),{
+type:"doughnut",
+data:{labels:["Ads","Organic","Email","Direct"],datasets:[{data:[35,30,20,15]}]}
+});
+
+new Chart(document.getElementById("retention"),{
+type:"line",
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{label:"Retention %",data:[10,15,20,25,30,35,40,42,45,48,50,55]}]}
+});
+
+// SCROLL TO TOP
+let btn=document.getElementById("topBtn");
+window.onscroll=()=>btn.style.display=window.scrollY>200?"block":"none";
+btn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+document.querySelectorAll("input").forEach(i=>i.addEventListener("input",update));
+update();
+</script>
+
+</body>
+</html>
