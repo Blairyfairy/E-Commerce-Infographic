@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Commerce ROI Experience</title>
+
+<title>E-Commerce ROI Experience | Investment vs Growth Infographic</title>
+
+<meta name="description" content="Interactive e-commerce ROI calculator, platform comparison, CAC, ROAS, CRO benchmarks, Shopify Magento WooCommerce performance modeling and growth projections.">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -20,10 +23,26 @@
 body {
   background: radial-gradient(circle at top, #0a1f3c, #04060c);
   color:white;
-  overflow-x:hidden;
+  scroll-behavior:smooth;
 }
 
-/* PARALLAX HERO */
+/* NAV */
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  backdrop-filter:blur(15px);
+  background:rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  z-index:1000;
+}
+nav a {color:white;text-decoration:none;font-size:.9rem;opacity:.7;}
+nav a:hover {opacity:1;color:var(--accent);}
+
+/* HERO */
 .hero {
   height:100vh;
   display:flex;
@@ -31,9 +50,7 @@ body {
   justify-content:center;
   align-items:center;
   text-align:center;
-  background: radial-gradient(circle, rgba(0,224,255,0.15), transparent);
 }
-
 .hero h1 {
   font-size:4rem;
   background:linear-gradient(90deg,#00e0ff,#00ffa6);
@@ -41,22 +58,8 @@ body {
   color:transparent;
 }
 
-.hero p {opacity:.7;margin-top:10px}
-
-/* PARALLAX */
-.parallax {
-  background-attachment:fixed;
-  background-size:cover;
-  background-position:center;
-}
-
 /* SECTIONS */
-.section {
-  padding:100px 20px;
-  max-width:1200px;
-  margin:auto;
-}
-
+.section {padding:100px 20px;max-width:1200px;margin:auto;}
 .card {
   background:var(--glass);
   border-radius:20px;
@@ -65,58 +68,72 @@ body {
   box-shadow:0 0 50px rgba(0,0,0,0.6);
   transition:.4s;
 }
+.card:hover {transform:translateY(-10px) scale(1.01);}
 
-.card:hover {transform:translateY(-10px) scale(1.01)}
+.grid {display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
 
-.grid {
-  display:grid;
-  gap:20px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-}
-
-/* SLIDERS */
-input[type=range] {
-  width:100%;
-}
-
-.label {
-  margin-top:10px;
-  font-size:.9rem;
-  opacity:.7;
-}
-
-/* FADE */
-.fade {
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s;
-}
+.fade {opacity:0;transform:translateY(60px);transition:1s;}
 .visible {opacity:1;transform:translateY(0);}
 
-/* KPI */
-.kpi {
-  font-size:2rem;
-  color:var(--accent2);
+/* BUTTONS */
+button {
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  margin:5px;
+  cursor:pointer;
+  background:linear-gradient(90deg,#00e0ff,#00ffa6);
+  color:black;
+}
+
+/* SCROLL TOP */
+#topBtn {
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:linear-gradient(90deg,#00e0ff,#00ffa6);
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<nav>
+<a href="#roi">ROI Engine</a>
+<a href="#charts">Data Models</a>
+<a href="#platforms">Platforms</a>
+<a href="#insights">Insights</a>
+</nav>
+
 <section class="hero">
-  <h1>E-Commerce Growth Engine</h1>
-  <p>Modern ROI Intelligence • 2026 Market Reality</p>
+<h1>E-Commerce Growth Engine</h1>
+<p>Modern ROI Intelligence • 2026 Market Reality</p>
 </section>
 
-<!-- STORY -->
-<section class="section fade">
+<!-- ORIGINAL + EXPANDED -->
+<section id="roi" class="section fade">
 <div class="card">
 <h2>📉 The 2026 Reality</h2>
 <p>
 Organic-only e-commerce is no longer competitive. Rising CAC (Customer Acquisition Cost),
 privacy changes (iOS tracking restrictions), and algorithm saturation mean that
 <strong>businesses without structured investment plateau within 3–6 months</strong>.
+<br><br>
+Additional modern pressures include:
+<br>
+• Increased CPM volatility across Meta & Google Ads<br>
+• AI-generated content saturation reducing organic reach<br>
+• Rising competition in DTC markets<br>
+• Marketplace dominance (Amazon, Walmart)<br><br>
+
+Conclusion: <strong>Capital efficiency + UX optimization now determine survival.</strong>
 </p>
 </div>
 </section>
@@ -131,132 +148,172 @@ and performance infrastructure. Modern stacks leverage:
 • Paid Ads (Meta, Google, TikTok)<br>
 • Conversion UX improvements (1–3% → 4–8%)<br>
 • Fast infrastructure (CDN, caching, edge delivery)<br>
-• Lifecycle marketing (email/SMS automation)<br><br>
+• Lifecycle marketing (email/SMS automation)<br>
+• AI personalization (product recommendations, segmentation)<br>
+• First-party data strategies post-cookie era<br><br>
 
-Result: <span class="kpi">3x–12x revenue lift within 12 months</span>
+Result: <span style="color:#00ffa6;font-size:1.5rem;">3x–12x revenue lift within 12 months</span>
 </p>
 </div>
 </section>
 
-<!-- INTERACTIVE ENGINE -->
+<!-- ROI ENGINE -->
 <section class="section fade">
 <div class="card">
-<h2>🎯 Live ROI Simulator</h2>
+<h2>🎯 Advanced ROI Simulator Engine</h2>
 
-<div class="label">Monthly Ad Spend ($)</div>
-<input type="range" min="500" max="50000" value="5000" id="ad">
+<label>Ad Spend</label>
+<input type="range" min="500" max="100000" value="5000" id="ad">
 
-<div class="label">Conversion Rate (%)</div>
-<input type="range" min="1" max="10" value="3" id="conv">
+<label>Conversion Rate</label>
+<input type="range" min="1" max="12" value="3" id="conv">
 
-<div class="label">Avg Order Value ($)</div>
-<input type="range" min="20" max="300" value="80" id="aov">
+<label>Average Order Value</label>
+<input type="range" min="20" max="500" value="80" id="aov">
 
 <h2 id="output"></h2>
 
-<canvas id="chart"></canvas>
+<div>
+<button onclick="scenario(1)">No Spend</button>
+<button onclick="scenario(2)">Invest</button>
+<button onclick="scenario(3)">Optimized</button>
+<button onclick="scenario(4)">Aggressive Scale</button>
+</div>
+
+<canvas id="mainChart"></canvas>
 </div>
 </section>
 
-<!-- PLATFORM INTEL -->
-<section class="section fade">
+<!-- DATA VISUALIZATION -->
+<section id="charts" class="section fade">
+<div class="card">
+<h2>📊 Investment Allocation Model</h2>
+<canvas id="pie"></canvas>
+</div>
+
+<div class="card">
+<h2>📈 Platform ROI Potential</h2>
+<canvas id="bar"></canvas>
+</div>
+
+<div class="card">
+<h2>📉 Growth Curve Comparison</h2>
+<canvas id="compare"></canvas>
+</div>
+
+<div class="card">
+<h2>📊 CAC vs LTV Dynamics</h2>
+<canvas id="ltv"></canvas>
+</div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms" class="section fade">
 <h2>🧠 Platform Strategy (Modern Use Cases)</h2>
 <div class="grid">
-
-<div class="card">
-<h3>Magento / Adobe Commerce</h3>
-<p>
-Enterprise brands ($5M+ revenue). High dev cost but unmatched scalability,
-multi-store, and performance tuning. ROI strongest when paired with large ad budgets.
-</p>
-</div>
-
-<div class="card">
-<h3>Shopify / Shopify Plus</h3>
-<p>
-Fastest go-to-market. Ideal for DTC brands leveraging paid ads.
-Strong ecosystem but higher long-term SaaS cost.
-</p>
-</div>
-
-<div class="card">
-<h3>WooCommerce</h3>
-<p>
-Best cost-to-flexibility ratio. Strong for SMBs with moderate traffic and custom needs.
-Requires optimization to scale.
-</p>
-</div>
-
-<div class="card">
-<h3>Headless (Next.js / Django)</h3>
-<p>
-Modern architecture. API-first, ultra-fast UX, ideal for high-performance scaling
-and global storefronts.
-</p>
-</div>
-
+<div class="card"><h3>Magento / Adobe Commerce</h3><p>Enterprise scaling, complex catalogs, global infrastructure.</p></div>
+<div class="card"><h3>Shopify / Shopify Plus</h3><p>Fast deployment, high marketing velocity, strong integrations.</p></div>
+<div class="card"><h3>WooCommerce</h3><p>Flexible, cost-efficient, strong for SMB customization.</p></div>
+<div class="card"><h3>Headless (Next.js / Django)</h3><p>API-first, high-performance, future-proof architecture.</p></div>
 </div>
 </section>
 
 <!-- INSIGHTS -->
-<section class="section fade">
+<section id="insights" class="section fade">
 <div class="card">
 <h2>📊 Key Market Insights (2026)</h2>
-
 <p>
 • Avg CPC: $0.80 – $2.50<br>
 • Conversion Rate Benchmark: 2% – 4% (optimized: 6%+)<br>
 • ROAS target: 2.5x – 6x<br>
 • Email/SMS revenue share: 20% – 40%<br>
-• Page speed impact: +1s delay = -7% conversions<br><br>
+• Page speed impact: +1s delay = -7% conversions<br>
+• Returning customer value: 2x–5x higher LTV<br>
+• Subscription models increasing retention by 30%+<br><br>
 
-<strong>Insight:</strong> UX and speed now impact revenue as much as ad spend.
+<strong>Insight:</strong> UX, retention, and infrastructure now impact revenue as much as ad spend.
 </p>
 </div>
 </section>
 
+<button id="topBtn">↑</button>
+
 <script>
-// INTERSECTION OBSERVER
-const obs = new IntersectionObserver(e=>{
-  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})
-});
+// ANIMATION
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})});
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 
-// CHART
-let ctx = document.getElementById('chart');
-let chart = new Chart(ctx, {
-  type:'line',
-  data:{labels:[...Array(12).keys()],
-  datasets:[{label:'Revenue Growth',data:[],borderWidth:2}]},
-  options:{
-    plugins:{legend:{labels:{color:"#fff"}}},
-    scales:{x:{ticks:{color:"#fff"}},y:{ticks:{color:"#fff"}}}
-  }
-});
+// ROI ENGINE
+let mode=2;
 
-// CALC ENGINE
+function scenario(m){mode=m;update();}
+
 function update(){
-  let ad = document.getElementById('ad').value;
-  let conv = document.getElementById('conv').value/100;
-  let aov = document.getElementById('aov').value;
+let ad=ad.value;
+let convRate=conv.value/100;
+let avg=aov.value;
 
-  let visitors = ad / 1.2; // avg CPC
-  let sales = visitors * conv;
-  let revenue = sales * aov;
+let base=(ad/1.2)*convRate*avg;
 
-  document.getElementById('output').innerHTML =
-    "$" + revenue.toFixed(0) + " / month";
+if(mode===1) base*=0.5;
+if(mode===2) base*=1;
+if(mode===3) base*=2;
+if(mode===4) base*=3.5;
 
-  let growth = [];
-  for(let i=1;i<=12;i++){
-    growth.push(revenue * i * 0.8);
-  }
+output.innerHTML="$"+base.toFixed(0)+"/month";
 
-  chart.data.datasets[0].data = growth;
-  chart.update();
+let growth=[];
+for(let i=1;i<=12;i++){growth.push(base*i*0.8);}
+mainChart.data.datasets[0].data=growth;
+mainChart.update();
 }
 
 document.querySelectorAll("input").forEach(i=>i.addEventListener("input",update));
+
+// CHARTS
+let mainChart=new Chart(document.getElementById('mainChart'),{
+type:'line',
+data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{label:'Projected Growth',data:[]}]}
+});
+
+new Chart(document.getElementById('pie'),{
+type:'pie',
+data:{labels:['Ads','UX','Email','Infra','AI'],datasets:[{data:[35,20,20,15,10]}]}
+});
+
+new Chart(document.getElementById('bar'),{
+type:'bar',
+data:{labels:['Magento','Shopify','Woo','Headless'],datasets:[{label:'ROI',data:[90,75,65,95]}]}
+});
+
+new Chart(document.getElementById('compare'),{
+type:'line',
+data:{
+labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+datasets:[
+{label:'No Spend',data:[100,150,200,250,300,350,400,450,500,550,600,650]},
+{label:'Invest',data:[500,1000,2500,5000,9000,15000,22000,30000,40000,55000,70000,90000]},
+{label:'Optimized',data:[1000,3000,7000,15000,30000,60000,90000,130000,180000,240000,300000,400000]}
+]
+}
+});
+
+new Chart(document.getElementById('ltv'),{
+type:'line',
+data:{
+labels:[1,2,3,4,5,6,7,8],
+datasets:[
+{label:'CAC',data:[50,50,50,50,50,50,50,50]},
+{label:'LTV',data:[60,90,120,180,250,320,400,500]}
+]
+}
+});
+
+// SCROLL TOP
+const btn=document.getElementById("topBtn");
+window.onscroll=()=>{btn.style.display=window.scrollY>300?"block":"none"};
+btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
 update();
 </script>
 
